@@ -26,6 +26,7 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
 import java.io.File;
+import java.sql.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -49,8 +50,9 @@ public class MainActivity extends AppCompatActivity {
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnSubmit = findViewById(R.id.btnSubmit);
-        btnFeed = findViewById(R.id.btnFeed);
 
+
+        btnFeed = findViewById(R.id.btnFeed);
         btnFeed.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnLogOut = findViewById(R.id.btnLogOut);
 
+
+        btnLogOut = findViewById(R.id.btnLogOut);
         btnLogOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
