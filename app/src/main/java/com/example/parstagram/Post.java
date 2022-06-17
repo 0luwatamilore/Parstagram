@@ -7,7 +7,9 @@ import com.parse.ParseUser;
 
 import org.parceler.Parcel;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @ParseClassName("Post")
 public class Post extends ParseObject {
@@ -16,6 +18,7 @@ public class Post extends ParseObject {
     public static final String KEY_USER = "user";
     public static final String KEY_CREATED_KEY = "createdAt";
     public static final String KEY_PROFILE_PIC = "profilePic";
+    public static final String KEY_USERS_LIKED = "likedBy";
 
     public Post() {}
 
@@ -43,6 +46,22 @@ public class Post extends ParseObject {
         put(KEY_USER,user);
     }
 
+    public String likedCountDisplayText() {
+        String likesText = String.valueOf(getLike().size());
+        likesText += getLike().size() == 1 ? " like" : " likes";
+        return likesText;
+    }
 
+    public List<String> getLike() {
+        List<String> likedBy = getList(KEY_USERS_LIKED);
+        if(likedBy == null) {
+            likedBy = new ArrayList<>();
+        }
+        return likedBy;
+    }
+
+    public void setUserLike(List<String> likedBy) {
+        put(KEY_USERS_LIKED, likedBy);
+    }
 
 }

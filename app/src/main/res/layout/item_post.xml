@@ -42,8 +42,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="0dp"
         tools:text="trying to look hipster" />
 
     <TextView
@@ -54,7 +54,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="3dp"
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="10dp"
         android:text="Post Time" />
@@ -68,4 +68,38 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCreatedAt"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-4dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/white"
+        app:srcCompat="@drawable/ic_baseline_turned_in_24" />
+
+    <ImageButton
+        android:id="@+id/btnLike"
+        android:layout_width="21dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvCreatedAt"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="-4dp"
+        android:backgroundTint="@color/white"
+        app:srcCompat="@drawable/ic_baseline_favorite_24" />
+
+    <TextView
+        android:id="@+id/tvLikesCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLike"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="351dp"
+        android:text="TextView" />
 </RelativeLayout>

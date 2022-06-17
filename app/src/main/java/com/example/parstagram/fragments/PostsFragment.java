@@ -88,20 +88,17 @@ public class PostsFragment extends Fragment {
         query.include(Post.KEY_USER);
         query.setLimit(20);
         query.addDescendingOrder(Post.KEY_CREATED_KEY);
-        query.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if(e != null){
-                    Log.e(TAG,"Issues with getting posts", e);
-                    return;
-                }
-                for (Post post: posts){
-                    Log.i(TAG,"Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
-                }
-                allPost.addAll(posts);
-                adapter.notifyDataSetChanged();
-                swipeContainer.setRefreshing(false);
+        query.findInBackground((posts, e) -> {
+            if(e != null){
+                Log.e(TAG,"Issues with getting posts", e);
+                return;
             }
+            for (Post post: posts){
+                Log.i(TAG,"Post: " + post.getDescription() + ", username: " + post.getUser().getUsername());
+            }
+            allPost.addAll(posts);
+            adapter.notifyDataSetChanged();
+            swipeContainer.setRefreshing(false);
         });
     }
 
