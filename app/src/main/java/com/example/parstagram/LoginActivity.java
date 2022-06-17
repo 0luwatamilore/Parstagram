@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -14,7 +13,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class loginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     public static final String TAG = "LoginActivity";
     private EditText etUsername;
     private EditText etPassword;
@@ -44,22 +43,19 @@ public class loginActivity extends AppCompatActivity {
     private void loginUser(String username, String password){
         Log.i(TAG, "Attempting to login User " + username);
 
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if (e != null){
-                    Log.e(TAG,"Issue with login", e);
-                    Toast.makeText(loginActivity.this,"Issue with Login",Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                goMainActivty();
-                Toast.makeText(loginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+        ParseUser.logInInBackground(username, password, (user, e) -> {
+            if (e != null){
+                Log.e(TAG,"Issue with login", e);
+                Toast.makeText(LoginActivity.this,"Issue with Login",Toast.LENGTH_SHORT).show();
+                return;
             }
+            goMainActivty();
+            Toast.makeText(LoginActivity.this, "Success!", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void goMainActivty() {
-        Intent i = new Intent(loginActivity.this,MainActivity.class);
+        Intent i = new Intent(LoginActivity.this,MainActivity.class);
         startActivity(i);
         finish();
     }

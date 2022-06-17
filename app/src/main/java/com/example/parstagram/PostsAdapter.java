@@ -12,9 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.parse.ParseFile;
 
-import org.parceler.Parcel;
 import org.parceler.Parcels;
 
 import java.util.List;
@@ -33,7 +34,8 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_post, parent, false);
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_post, parent, false);
         return new ViewHolder(view);
     }
 
@@ -54,6 +56,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private ImageView ivImage;
         private TextView tvDescription;
         private TextView tvCreatedAt;
+        private ImageView ivProfile;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +64,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             ivImage = itemView.findViewById(R.id.ivImage);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvCreatedAt = itemView.findViewById(R.id.tvCreatedAt);
+            ivProfile = itemView.findViewById(R.id.ivProfile);
         }
 
         public void bind(Post post) {
@@ -70,18 +74,23 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
 
             tvCreatedAt.setText((post.getCreatedAt().toString()));
 
-            ivImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent i = new Intent(context,PostDetailsActivity.class);
-                    i.putExtra(Post.class.getSimpleName(), Parcels.wrap(post));
-                    context.startActivity(i);
-                }
+            ivImage.setOnClickListener(v -> {
+                Intent i = new Intent(context,PostDetailsActivity.class);
+                i.putExtra(Post.class.getSimpleName(), Parcels.wrap(post));
+                context.startActivity(i);
             });
+            ParseFile profileImg = post.getUser().getParseFile("profilePic");
+
 
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
+
+            }
+            if (profileImg!= null){
+                Glide.with(context).load(profileImg.getUrl())
+                        .transform(new CenterCrop(),new RoundedCorners(14))
+                        .into(ivProfile);
             }
         }
     }
