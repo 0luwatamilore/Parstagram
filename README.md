@@ -2,13 +2,13 @@
 
 **Parstagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **11** hours spent in total
+Time spent: **32** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] User sees app icon in home screen.
+- [ x ] User sees app icon in home screen.
 - [ x ] User can sign up to create a new account using Parse authentication
 - [ X ] User can log in to their account
 - [ X ] The current signed in user is persisted across app restarts
@@ -16,7 +16,7 @@ The following **required** functionality is completed:
 - [ X ] User can take a photo, add a caption, and post it to "Instagram"
 - [ X ] User can view the last 20 posts submitted to "Instagram"
 - [ X ] User can pull to refresh the last 20 posts submitted to "Instagram"
-- [ ] User can tap a post to go to a Post Details activity, which includes timestamp and caption.
+- [ x ] User can tap a post to go to a Post Details activity, which includes timestamp and caption.
 
 The following **stretch** features are implemented:
 
@@ -29,10 +29,10 @@ The following **stretch** features are implemented:
   - [ x ] Profile Tab (to view only the current user's posts, in a grid)
 - [ x ] Show the username and creation time for each post
 - User Profiles:
-  - [ ] Allow the logged in user to add a profile photo
+  - [ x ] Allow the logged in user to add a profile photo
   - [ x ] Display the profile photo with each post
   - [ ] Tapping on a post's username or profile photo goes to that user's profile page
-  - [ ] User Profile shows posts in a grid
+  - [ x ] User Profile shows posts in a grid
 - [ ] After the user submits a new post, show an indeterminate progress bar while the post is being uploaded to Parse
 - [ ] User can comment on a post and see all comments for each post in the post details screen.
 - [ x ] User can like a post and see number of likes for each post in the post details screen.
@@ -49,6 +49,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/93938344/174413463-5161f0ac-161f-446c-83bf-0913d9a0a07d.gif)
+
 
 <img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
