@@ -2,6 +2,7 @@ package com.example.parstagram;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,27 +30,23 @@ public class SignupActivity extends AppCompatActivity {
         etpassword = findViewById(R.id.etpassword);
         btnSignUp = findViewById(R.id.btnSignUp);
 
-        btnSignUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = etName.getText().toString();
-                String password = etpassword.getText().toString();
-                // Configure Query
-                ParseUser user = new ParseUser();
-                // Store an object
-                user.setPassword(password);
-                user.setUsername(name);
+        btnSignUp.setOnClickListener(v -> {
+            String name = etName.getText().toString();
+            String password = etpassword.getText().toString();
+            // Configure Query
+            ParseUser user = new ParseUser();
+            // Store an object
+            user.setPassword(password);
+            user.setUsername(name);
 //              // Saving object
-                user.signUpInBackground(new SignUpCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            System.out.println(e);
-                        }
-                    }
-                });
+            user.signUpInBackground(e -> {
+                if (e == null) {
+                    System.out.println(e);
+                    Intent i = new Intent(SignupActivity.this,MainActivity.class);
+                    startActivity(i);
+                }
+            });
 
-            }
         });
     }
 }
